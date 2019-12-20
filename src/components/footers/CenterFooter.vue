@@ -5,7 +5,7 @@
       <q-item
         v-for="(blog, index) in blogs"
         :key="index"
-        :to="blog.url"
+        :to="`/${blog.url}`"
         clickable
         v-ripple
         exact

@@ -43,7 +43,11 @@
               <q-card-section>{{ blog.text }}...</q-card-section>
 
               <q-card-section>
-                <q-btn color="primary-alt" label="Read More" :to="blog.url" />
+                <q-btn
+                  color="primary-alt"
+                  label="Read More"
+                  :to="`/${blog.url}`"
+                />
               </q-card-section>
             </div>
           </q-card>

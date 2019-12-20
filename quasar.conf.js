@@ -73,7 +73,9 @@ module.exports = function(ctx) {
         "QPagination",
         "QForm",
         "QInput",
-        "QSeparator"
+        "QSeparator",
+        "QUploader",
+        "QEditor"
       ],
 
       directives: ["Ripple"],
