@@ -43,14 +43,14 @@ const actions = {
       Loading.hide();
       if (user) {
         commit("setLoggedIn", true);
-        // LocalStorage.set("loggedIn", true);
-        this.$router.push("/create-blog").catch(err => {});
-        // dispatch("tasks/fbReadData", null, { root: true });
+        LocalStorage.set("loggedIn", true);
+        // this.$router.push("/create-blog").catch(err => {});
+        dispatch("blogs/fbReadData", null, { root: true });
       } else {
-        // commit("tasks/clearTasks", null, { root: true });
-        // commit("tasks/setTasksDownloaded", false, { root: true });
+        commit("blogs/clearTasks", null, { root: true });
+        commit("blogs/setTasksDownloaded", false, { root: true });
         commit("setLoggedIn", false);
-        // LocalStorage.set("loggedIn", false);
+        LocalStorage.set("loggedIn", false);
         this.$router.replace("/").catch(err => {});
       }
     });
