@@ -17,7 +17,7 @@
 				<div class="uk-child-width-1-1@s uk-child-width-1-2@m" uk-grid>
 					<div class="q-pa-xl">
 						<h5 class="green-text tab-h5">Save on the details while capturing the big picture</h5>
-						<p>{{content.text}}</p>
+						<p class="pre-formatted">{{content.text}}</p>
 						<q-btn color="primary-alt" label="More info" icon="info" to="/web-design" class="q-my-lg" />
 					</div>
 					<div class="text-center q-py-lg">

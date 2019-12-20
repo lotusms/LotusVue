@@ -16,8 +16,10 @@ $primary: #2c5364;
 $secondary: #4f5b62;
 $accent: #539608;
 $dark-grey: #263238;
+// $bg-primary: #0f2027;
 $bg-primary: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-$bg-primary-alt: linear-gradient(to right, #4f5b62, #6b7375, #4f5b62);
+// $bg-primary-alt: linear-gradient(to right, #4f5b62, #6b7375, #4f5b62);
+$bg-primary-alt: $primary;
 
 // background: #0F2027;
 // background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);

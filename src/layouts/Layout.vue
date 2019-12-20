@@ -17,7 +17,7 @@
 						exact
 						flat
 					>
-						<q-menu auto-close square>
+						<q-menu auto-close square content-style="background-color:#2c5364; color: #ffffff">
 							<q-list style="min-width: 100px">
 								<q-item clickable to="/web-design">
 									<q-item-section>Web Design</q-item-section>

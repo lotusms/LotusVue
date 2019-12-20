@@ -1,6 +1,6 @@
 <template>
 	<div class="bg-grey-2 shadow-2">
-		<q-banner class="bg-primary">
+		<q-banner class="bg-primary-alt">
 			<h5 class="green-text text-center q-mb-none">{{heading}}</h5>
 		</q-banner>
 		<q-list separator>

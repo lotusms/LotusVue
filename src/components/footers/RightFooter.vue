@@ -5,7 +5,7 @@
 			<q-item v-for="(contact, index) in contacts" :key="index">
 				<q-item-section avatar>
 					<a :href="contact.to" target="_blank">
-						<q-avatar color="primary" text-color="white" :icon="contact.icon" />
+						<q-avatar color="primary-alt" text-color="white" size="md" :icon="contact.icon" />
 					</a>
 				</q-item-section>
 

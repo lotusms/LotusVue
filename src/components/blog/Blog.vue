@@ -1,6 +1,6 @@
 <template>
 	<div class="q-mr-lg" id="blogContent">
-		<q-card class="my-card q-mb-lg" v-for="(link, index) in paginate()" :key="index" :to="link.to">
+		<q-card class="my-card q-mb-lg" square v-for="(link, index) in paginate()" :key="index">
 			<div class="ms-thumbnail ms-thumbnail-diagonal">
 				<img
 					:src="`https://raw.githubusercontent.com/lotusms/LotusMS/master/blog/full-image/${link.fullimage}`"
@@ -21,7 +21,11 @@
 					</div>
 				</q-card-section>
 
-				<q-card-section>{{link.text}}</q-card-section>
+				<q-card-section>{{link.text}}...</q-card-section>
+
+				<q-card-section>
+					<q-btn color="primary-alt" label="Read More" :to="link.to" />
+				</q-card-section>
 			</div>
 		</q-card>
 		<ul class="row justify-center no-bullet">
@@ -51,7 +55,6 @@
 </template>
 
 <script>
-import { log } from "util";
 export default {
 	name: "Blog",
 	data() {
@@ -138,7 +141,6 @@ export default {
 	computed: {
 		totalPages: function() {
 			return Math.ceil(this.resultCount / this.itemsPerPage);
-			console.log(totalPages);
 		},
 		isStartPage: function() {
 			return this.currentPage == 0;
@@ -198,111 +200,6 @@ export default {
 	}
 	span {
 		font-size: 13px;
-	}
-}
-
-.ms-thumbnail {
-	position: relative;
-	overflow: hidden;
-	margin-bottom: 0;
-	img {
-		position: relative;
-		z-index: 0;
-		transition: all ease 1s;
-		width: 100%;
-	}
-	.ms-thumbnail-caption {
-		position: absolute;
-		z-index: 2;
-		left: 0;
-		right: 0;
-		top: -100%;
-		bottom: 0;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 10, 18, 0.45);
-		padding: 0;
-		color: #fff;
-		transition: all ease 0.5s;
-		-webkit-backface-visibility: hidden;
-		&:before {
-			content: "";
-			display: block;
-			background-color: rgba(0, 10, 18, 0.45);
-			position: absolute;
-			left: 0;
-			right: 0;
-			top: 200%;
-			bottom: 0;
-			width: 100%;
-			height: 100%;
-			z-index: -1;
-			transition: all ease 0.5s;
-			-webkit-backface-visibility: hidden;
-		}
-		.ms-thumbnail-caption-content {
-			-webkit-transform: translateY(-100%);
-			transform: translateY(-100%);
-			transition: all ease 0.6s;
-			-webkit-backface-visibility: hidden;
-			padding: 20px;
-			padding: 2rem;
-			position: absolute;
-			top: 50%;
-			width: 100%;
-			.ms-thumbnail-caption-title {
-				margin: 0 0 10px;
-				margin: 0 0 1rem;
-			}
-		}
-	}
-	&:hover,
-	&:focus {
-		img {
-			-webkit-transform: scale(1.1);
-			transform: scale(1.1);
-		}
-		.ms-thumbnail-caption {
-			top: 0;
-			opacity: 1;
-			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-			&:before {
-				top: 0;
-			}
-			.ms-thumbnail-caption-content {
-				-webkit-transform: translateY(-50%);
-				transform: translateY(-50%);
-			}
-		}
-	}
-	&.ms-thumbnail-diagonal {
-		.ms-thumbnail-caption {
-			right: 100%;
-			left: auto;
-			&:before {
-				right: -200%;
-				left: auto;
-			}
-			.ms-thumbnail-caption-content {
-				-webkit-transform: translateY(-50%);
-				transform: translateY(-50%);
-			}
-		}
-		&:hover,
-		&:focus {
-			.ms-thumbnail-caption {
-				right: 0;
-				left: auto;
-				&:before {
-					right: 0;
-					left: auto;
-				}
-				.ms-thumbnail-caption-content {
-					-webkit-transform: translateY(-50%);
-					transform: translateY(-50%);
-				}
-			}
-		}
 	}
 }
 
