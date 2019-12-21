@@ -85,7 +85,7 @@ const actions = {
       if (error) {
         showErrorMessage(error.message);
       } else {
-        Notify.create("Blog added!");
+        console.log("Blog added!");
       }
     });
   },
@@ -98,7 +98,7 @@ const actions = {
       } else {
         let keys = Object.keys(payload.updates);
         if (!(keys.includes("completed") && keys.length === 1)) {
-          Notify.create("Blogk updated!");
+          console.log("Blogk updated!");
         }
       }
     });
@@ -110,7 +110,7 @@ const actions = {
       if (error) {
         showErrorMessage(error.message);
       } else {
-        Notify.create("Blog deleted");
+        console.log("Blog deleted");
       }
     });
   }

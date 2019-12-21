@@ -8,14 +8,14 @@ var firebaseConfig = {
   authDomain: "lotusms-774d8.firebaseapp.com",
   databaseURL: "https://lotusms-774d8.firebaseio.com",
   projectId: "lotusms-774d8",
-  storageBucket: "lotusms-774d8.appspot.com",
+  storageBucket: "gs://lotusms-774d8.appspot.com",
   messagingSenderId: "814538903676",
   appId: "1:814538903676:web:f943b37801313302dbb9f9"
 };
 
 let firebaseApp = firebase.initializeApp(firebaseConfig);
 let firebaseDb = firebaseApp.database();
-
+// let fbStorage = firebaseApp.storage();
 let firebaseAuth = firebaseApp.auth();
 
 export { firebaseAuth, firebaseDb };

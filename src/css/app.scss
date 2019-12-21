@@ -357,3 +357,17 @@ h5 {
     }
   }
 }
+.blog-post {
+  .blog-title {
+    margin-bottom: 5px;
+  }
+  .date-section {
+    margin: 0 auto 20px;
+    font-size: 0.9em;
+    i {
+      margin-right: 7px;
+      position: relative;
+      top: -1px;
+    }
+  }
+}

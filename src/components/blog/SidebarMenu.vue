@@ -14,13 +14,7 @@
       >
         <q-item-section avatar>
           <q-avatar>
-            <img
-              :src="
-                `https://raw.githubusercontent.com/lotusms/LotusMS/master/blog/${blog.image}`
-              "
-              :alt="blog.title"
-              class="avatar"
-            />
+            <img :src="blog.thumb" :alt="blog.title" class="avatar" />
           </q-avatar>
         </q-item-section>
 
