@@ -236,6 +236,9 @@ export default {
 .q-btn--active {
   color: #000000 !important;
   background: #d2d2d2 !important;
+  span {
+    color: #000000 !important;
+  }
 }
 .main-nav {
   margin-top: 28px;
