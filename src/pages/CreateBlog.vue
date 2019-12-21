@@ -101,6 +101,9 @@
 </template>
 
 <script>
+import Butter from "buttercms";
+export const butter = Butter("96cab44371a94ebbf9835d99e990f10d47827a49");
+
 export default {
   name: "CreateBlog",
   data() {

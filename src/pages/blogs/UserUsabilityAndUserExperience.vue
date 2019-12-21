@@ -1,79 +1,46 @@
 <template>
-	<q-page>
-		<div class="q-pa-xl">
-			<div class="full-width row wrap justify-start items-start">
-				<div class="col-xs-12 col-md-8">
-					<div class="q-ma-md">
-						<q-card class="my-card" square>
-							<div class="bg-grey-2">
-								<q-card-section>
-									<h1 class="heading green-text text-h2">Is there an ROI in buying a website?</h1>
-									<div class="text-subtitle1 date-section q-mt-none">
-										<q-icon size="5" name="calendar_today" color="primary" class="icon" />23 Nov 2018
-									</div>
-
-									<img
-										src="https://raw.githubusercontent.com/lotusms/LotusMS/master/blog/full-image/roi.jpg"
-										alt="Is there an ROI in buying a website?"
-									/>
-								</q-card-section>
-
-								<q-card-section>
-									<h4>What is ROI?</h4>
-									<p>The term ROI is commonly mentioned in many business models. It is an acronym for Return On Investment. A goal in which a measure is calculated to decide whether an investment will bring a positive or negative return as an outcome from an investment. In plain words, when you invest an amount of money, you would expect a profit from that investment. However, it doesn’t always work that way. Sometimes an investment results in a loss. The most successful business and enterprises analyze these returns constantly to determine whether to continue investing or abandon the venture. Truth is, there is never a guarantee on any investment. There are ways to analyze data from research to determine if an investment could potentially generate a positive return, however, it is always a case-by-case situation.</p>
-
-									<h4>The Cost</h4>
-									<p>Website pricing differs on many factors. Ranging from free by way of DIY website builders to millions of dollars from a digital agency. See below.</p>
-									<roi-chart />
-									<p>
-										While free sounds very tempting, keep in mind that the actual return from a website is generated from the conversions it creates, rather than from its appearance. In other words, even if you have an eye for design, you may be a stranger to many concepts of User Experience and Digital Marketing that are used to "hack the mind of the users".
-										<br />
-										<br />The next best alternative to free is to hire a freelancer. A freelancer is an independent contractor that often runs a lower level business. Many freelancers possess amazing skills and have very low overhead. Most work from home and in the case of web design, they have a very small operating budget which allows them to provide lower prices. On the other hand, they are not the most suitable option to take on large projects or projects that require a large variety of skillsets.
-										<br />
-										<br />At the furthest end of the spectrum, you can find large digital agencies. These agencies are well structured and have many professionals in their hire focused to work in a specific area of your website: designers, developers, database managers, network managers, content writers, customer support, and more. The downside reflects on their price tag. Because they have a larger overhead, specifically in their payroll department, they are forced to offer higher prices.
-									</p>
-									<h4>Where Do I Fit?</h4>
-									<p>In the middle, you will find a plethora of web design firms that offer great services and a more comfortable cost of investment. It really depends on who would be willing to offer the most for your money without sacrificing the most important requirements you are seeking. We estimate two comfort zones to provide you with some guidance (see chart above).
-									<br />
-									<br />
-
-									Comfort Zone 1 is more fitting for a small company or business exploring digital marketing for the first time, a low marketing budget, or a company who doesn't rely heavily on an internet presence. Be aware, that although most of your client base is not online, in a technology world, a professional website is almost expected from serious businesses.
-									<br />
-									<br />
-
-									Comfort Zone 2 is more suitable for experienced business owners with a heavier interest or dependency on internet traffic. These business models often perform online transactions, capture leads, or have an attentive niche tracking their moves. The option to create ROI directly from the website or by means of attracting customers to their doorstep is a different discussion.</p>
-
-									<h4>How is ROI created?</h4>
-									<p>It all starts with a conversion goal. Depending on your business, your main goal can be to generate sales, create leads, increase traffic, et cetera. Communicate with your agency to explain what you expect to return from your website investment. If you own a retail company, you may be interested in a monetary return from your investment. This is a different return from someone who is interested in increasing their website popularity in their industry. The return for someone looking to generate more traffic reflects on more phone calls or a more prevalent presence in search engine results. It is important to know your expectations are realistic and know that building a great landing page may not necessarily create sales and an e-commerce website may not improve your marketing value.</p>
-
-									<h4>Our Suggestions</h4>
-									<p>It is recommended that you start small especially if this is a new journey for you. There are many unknowns and you will be going through many "trial and error" situations during the first year. Avoid the DIY route. It will only set you up for failure and it will remove all confidence that a website could be a good investment. Talk to your web design agency about any low initial cost with a higher building capacity. This allows you to build on your smaller website as you grow and as the need arises.</p>
-								</q-card-section>
-							</div>
-						</q-card>
-					</div>
-				</div>
-				<div class="col-xs-12 col-md-4">
-					<div class="q-ma-md">
-						<sidebar-menu />
-					</div>
-				</div>
-			</div>
-		</div>
-	</q-page>
+  <q-page>
+    <div class="q-pa-xl">
+      <div class="full-width row wrap justify-start items-start">
+        <div class="col-xs-12 col-md-8">
+          <div class="q-ma-md">
+            <blog-post
+              :title="title"
+              :date="date"
+              :image="image"
+              :text="text"
+            />
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="q-ma-md">
+            <sidebar-menu />
+          </div>
+        </div>
+      </div>
+    </div>
+  </q-page>
 </template>
 
 <script>
 import SidebarMenu from "../../components/blog/SidebarMenu";
-import RoiChart from "../../components/blog/RoiChart";
+import BlogPost from "../../components/blog/BlogPost";
 export default {
-	name: "RoiPage",
-	components: {
-		SidebarMenu,
-		RoiChart
-	}
+  name: "BlogPage",
+  components: {
+    SidebarMenu,
+    BlogPost
+  },
+  data() {
+    return {
+      title: "User Usability And User Experience",
+      date: "02 Jul 2016",
+      image: "UX.jpg",
+      text:
+        '<p>Websites are comprised of two major sections - the client side and the server side. The client side is also known as the "front end", and the server-side known as "back end". Both sides work unison to handle the website\'s  functionality. The server-side handles all the programming operations the website needs to process information. Meanwhile, the client side is what the user sees, such as images, font, color, and design layouts. User Interfacing, User Usability, and User Experience are the three front-end concepts that constitute a web design.</p><h4>User Interface</h4><p>User interface (UI) refers to the look &amp; feel given to the website by the web designer. This concept revolves around the artistic realm of the web design. Often, a web designer with graphic designing abilities builds the designs. His or her responsibilities are to create image mock-ups that demonstrate the pages\' look. This process is  also known as wireframing.</p><h4>User Usability</h4><p>Oftentimes, the graphic designer has little to no experience in front-end development languages. It is up to the front end developer to build the designs in code and give it life in a computer browser. By creating the web designs using code users are able to experience some of the behaviors on the website. e.g. page transitions, hover effects, fades, among other things.<br/> <br/> Usability ensures the website works without code errors and all elements work as expected. This includes:</p><ul>	<li>Sub menus in the navigation open as required.</li>	<li>Buttons work and have a focus, hover, and active state.</li>	<li>Hyperlinks are different than normal text in color and hover state.</li>	<li>Elements do not overlap each other.</li>	<li>Website is responsive (mobile compatible).</li>	<li>Website is consistent to all browsers.</li>	<li>And more...</li></ul><h4>User Experience</h4><p>User Experience (UX) is the psychology behind the web design process. Many refer to UX as the art of "hacking the minds of the users". A UX expert focuses on creating a web design that is easy to use and easy to understand. By understanding the user\'s expectations, a UX expert can cater to the needs of the users. Doing so reduces cognitive friction between the user and the design.<br/><br/> This process is difficult to conduct. Most clients expect the website design to meet their design preferences. In actuality, products and services, as well as the consumers or users, dictate the web design.</p><h4>Conclusion</h4><p>In summary, anyone with enough HTML and CSS experience can build a website. Others choose a DIY online system that offers free templates to build a website. Chances are, it may actually result in a nice design. Yet, this only covers the User Interfacing part. Professional experience is the most effective way to achieve User Usability and User Experience. These are the tools a website needs to enhance user engagement.</p>'
+    };
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

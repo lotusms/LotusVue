@@ -1,79 +1,46 @@
 <template>
-	<q-page>
-		<div class="q-pa-xl">
-			<div class="full-width row wrap justify-start items-start">
-				<div class="col-xs-12 col-md-8">
-					<div class="q-ma-md">
-						<q-card class="my-card" square>
-							<div class="bg-grey-2">
-								<q-card-section>
-									<h1 class="heading green-text text-h2">Is there an ROI in buying a website?</h1>
-									<div class="text-subtitle1 date-section q-mt-none">
-										<q-icon size="5" name="calendar_today" color="primary" class="icon" />23 Nov 2018
-									</div>
-
-									<img
-										src="https://raw.githubusercontent.com/lotusms/LotusMS/master/blog/full-image/roi.jpg"
-										alt="Is there an ROI in buying a website?"
-									/>
-								</q-card-section>
-
-								<q-card-section>
-									<h4>What is ROI?</h4>
-									<p>The term ROI is commonly mentioned in many business models. It is an acronym for Return On Investment. A goal in which a measure is calculated to decide whether an investment will bring a positive or negative return as an outcome from an investment. In plain words, when you invest an amount of money, you would expect a profit from that investment. However, it doesn’t always work that way. Sometimes an investment results in a loss. The most successful business and enterprises analyze these returns constantly to determine whether to continue investing or abandon the venture. Truth is, there is never a guarantee on any investment. There are ways to analyze data from research to determine if an investment could potentially generate a positive return, however, it is always a case-by-case situation.</p>
-
-									<h4>The Cost</h4>
-									<p>Website pricing differs on many factors. Ranging from free by way of DIY website builders to millions of dollars from a digital agency. See below.</p>
-									<roi-chart />
-									<p>
-										While free sounds very tempting, keep in mind that the actual return from a website is generated from the conversions it creates, rather than from its appearance. In other words, even if you have an eye for design, you may be a stranger to many concepts of User Experience and Digital Marketing that are used to "hack the mind of the users".
-										<br />
-										<br />The next best alternative to free is to hire a freelancer. A freelancer is an independent contractor that often runs a lower level business. Many freelancers possess amazing skills and have very low overhead. Most work from home and in the case of web design, they have a very small operating budget which allows them to provide lower prices. On the other hand, they are not the most suitable option to take on large projects or projects that require a large variety of skillsets.
-										<br />
-										<br />At the furthest end of the spectrum, you can find large digital agencies. These agencies are well structured and have many professionals in their hire focused to work in a specific area of your website: designers, developers, database managers, network managers, content writers, customer support, and more. The downside reflects on their price tag. Because they have a larger overhead, specifically in their payroll department, they are forced to offer higher prices.
-									</p>
-									<h4>Where Do I Fit?</h4>
-									<p>In the middle, you will find a plethora of web design firms that offer great services and a more comfortable cost of investment. It really depends on who would be willing to offer the most for your money without sacrificing the most important requirements you are seeking. We estimate two comfort zones to provide you with some guidance (see chart above).
-									<br />
-									<br />
-
-									Comfort Zone 1 is more fitting for a small company or business exploring digital marketing for the first time, a low marketing budget, or a company who doesn't rely heavily on an internet presence. Be aware, that although most of your client base is not online, in a technology world, a professional website is almost expected from serious businesses.
-									<br />
-									<br />
-
-									Comfort Zone 2 is more suitable for experienced business owners with a heavier interest or dependency on internet traffic. These business models often perform online transactions, capture leads, or have an attentive niche tracking their moves. The option to create ROI directly from the website or by means of attracting customers to their doorstep is a different discussion.</p>
-
-									<h4>How is ROI created?</h4>
-									<p>It all starts with a conversion goal. Depending on your business, your main goal can be to generate sales, create leads, increase traffic, et cetera. Communicate with your agency to explain what you expect to return from your website investment. If you own a retail company, you may be interested in a monetary return from your investment. This is a different return from someone who is interested in increasing their website popularity in their industry. The return for someone looking to generate more traffic reflects on more phone calls or a more prevalent presence in search engine results. It is important to know your expectations are realistic and know that building a great landing page may not necessarily create sales and an e-commerce website may not improve your marketing value.</p>
-
-									<h4>Our Suggestions</h4>
-									<p>It is recommended that you start small especially if this is a new journey for you. There are many unknowns and you will be going through many "trial and error" situations during the first year. Avoid the DIY route. It will only set you up for failure and it will remove all confidence that a website could be a good investment. Talk to your web design agency about any low initial cost with a higher building capacity. This allows you to build on your smaller website as you grow and as the need arises.</p>
-								</q-card-section>
-							</div>
-						</q-card>
-					</div>
-				</div>
-				<div class="col-xs-12 col-md-4">
-					<div class="q-ma-md">
-						<sidebar-menu />
-					</div>
-				</div>
-			</div>
-		</div>
-	</q-page>
+  <q-page>
+    <div class="q-pa-xl">
+      <div class="full-width row wrap justify-start items-start">
+        <div class="col-xs-12 col-md-8">
+          <div class="q-ma-md">
+            <blog-post
+              :title="title"
+              :date="date"
+              :image="image"
+              :text="text"
+            />
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="q-ma-md">
+            <sidebar-menu />
+          </div>
+        </div>
+      </div>
+    </div>
+  </q-page>
 </template>
 
 <script>
 import SidebarMenu from "../../components/blog/SidebarMenu";
-import RoiChart from "../../components/blog/RoiChart";
+import BlogPost from "../../components/blog/BlogPost";
 export default {
-	name: "RoiPage",
-	components: {
-		SidebarMenu,
-		RoiChart
-	}
+  name: "BlogPage",
+  components: {
+    SidebarMenu,
+    BlogPost
+  },
+  data() {
+    return {
+      title: "Content Validation",
+      date: "2 Jul 2017",
+      image: "GoogleContentAuthorship.jpg",
+      text:
+        '<h4>Content Authorship</h4><p>Content Authorship markup (rel="author") is no longer supported by Google as of August 28th, 2014. This means, Google no longer feels it is worth the effort to scout through the data to find exact copies of re-written content and accredited to someone else.<br/><br/>With the Internet being such a huge source of information, it is very common to find concurring information than it is to find additional content related to the topic. Many SEO gurus and researchers build data and statistics on how many experts agree on a subject. It doesn\'t make it valid, but it adds an argument to a theory.<br/><br/> Ultimately, website content starves as soon as the topic becomes irrelevant and content is not removed or updated. Therefore, for validity sake, the date of the content and the original source is the most accurate place to gather information from. Website content is merely used to the discretion of the author to deliver a message on a specific subject based on the author\'s beliefs.</p><h4>Content Ranking</h4><p>The greatest concern for many SEO scoundrels was the fear that ranking would become affected by this. It does to an extent. Although content authorship is dead, author ranking is not. Google\'s algorithm still crawls content finding the author and returns it as a search result when found. This brings validity to the author, not the website. And it does not make the content true, rather, it makes it popular. However, it only makes it popular by user interaction. One story from different authors will only create popularity to the author\'s article that resulted in more sessions/click ratio. So, is it worth it to fight for content ownership? Debatable, in my opinion. I\'d suggest looking further into who is copying your story and allowing them to concur with your points. Suggesting accrediting you is always a good idea.</p><h4>Who Did It First?</h4><p>It is always a clever idea to timestamp your content. Google will consider the time the article was written and provide it with the search results. However, if you suspect someone may have stolen your content, you can look into the <a href="http://web.archive.org/" target="_blank">Internet Archives</a> to retrieve the time this particular  article/page was cached. </p><h4>Reading Material</h4><a href="http://searchengineland.com/author-rank-authorship-rankings-that-eric-schmidt-book-quote-153253"  target="_blank">Author Rank, Authorship, Search Rankings &amp; That Eric Schmidt Book Quote</a><br/><a href="http://searchengineland.com/google-authorship-dead-author-rank-202254" target="_blank">Google Authorship May Be Dead, But Author Rank Is Not</a>'
+    };
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

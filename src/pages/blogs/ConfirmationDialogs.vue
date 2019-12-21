@@ -1,79 +1,46 @@
 <template>
-	<q-page>
-		<div class="q-pa-xl">
-			<div class="full-width row wrap justify-start items-start">
-				<div class="col-xs-12 col-md-8">
-					<div class="q-ma-md">
-						<q-card class="my-card" square>
-							<div class="bg-grey-2">
-								<q-card-section>
-									<h1 class="heading green-text text-h2">Is there an ROI in buying a website?</h1>
-									<div class="text-subtitle1 date-section q-mt-none">
-										<q-icon size="5" name="calendar_today" color="primary" class="icon" />23 Nov 2018
-									</div>
-
-									<img
-										src="https://raw.githubusercontent.com/lotusms/LotusMS/master/blog/full-image/roi.jpg"
-										alt="Is there an ROI in buying a website?"
-									/>
-								</q-card-section>
-
-								<q-card-section>
-									<h4>What is ROI?</h4>
-									<p>The term ROI is commonly mentioned in many business models. It is an acronym for Return On Investment. A goal in which a measure is calculated to decide whether an investment will bring a positive or negative return as an outcome from an investment. In plain words, when you invest an amount of money, you would expect a profit from that investment. However, it doesn’t always work that way. Sometimes an investment results in a loss. The most successful business and enterprises analyze these returns constantly to determine whether to continue investing or abandon the venture. Truth is, there is never a guarantee on any investment. There are ways to analyze data from research to determine if an investment could potentially generate a positive return, however, it is always a case-by-case situation.</p>
-
-									<h4>The Cost</h4>
-									<p>Website pricing differs on many factors. Ranging from free by way of DIY website builders to millions of dollars from a digital agency. See below.</p>
-									<roi-chart />
-									<p>
-										While free sounds very tempting, keep in mind that the actual return from a website is generated from the conversions it creates, rather than from its appearance. In other words, even if you have an eye for design, you may be a stranger to many concepts of User Experience and Digital Marketing that are used to "hack the mind of the users".
-										<br />
-										<br />The next best alternative to free is to hire a freelancer. A freelancer is an independent contractor that often runs a lower level business. Many freelancers possess amazing skills and have very low overhead. Most work from home and in the case of web design, they have a very small operating budget which allows them to provide lower prices. On the other hand, they are not the most suitable option to take on large projects or projects that require a large variety of skillsets.
-										<br />
-										<br />At the furthest end of the spectrum, you can find large digital agencies. These agencies are well structured and have many professionals in their hire focused to work in a specific area of your website: designers, developers, database managers, network managers, content writers, customer support, and more. The downside reflects on their price tag. Because they have a larger overhead, specifically in their payroll department, they are forced to offer higher prices.
-									</p>
-									<h4>Where Do I Fit?</h4>
-									<p>In the middle, you will find a plethora of web design firms that offer great services and a more comfortable cost of investment. It really depends on who would be willing to offer the most for your money without sacrificing the most important requirements you are seeking. We estimate two comfort zones to provide you with some guidance (see chart above).
-									<br />
-									<br />
-
-									Comfort Zone 1 is more fitting for a small company or business exploring digital marketing for the first time, a low marketing budget, or a company who doesn't rely heavily on an internet presence. Be aware, that although most of your client base is not online, in a technology world, a professional website is almost expected from serious businesses.
-									<br />
-									<br />
-
-									Comfort Zone 2 is more suitable for experienced business owners with a heavier interest or dependency on internet traffic. These business models often perform online transactions, capture leads, or have an attentive niche tracking their moves. The option to create ROI directly from the website or by means of attracting customers to their doorstep is a different discussion.</p>
-
-									<h4>How is ROI created?</h4>
-									<p>It all starts with a conversion goal. Depending on your business, your main goal can be to generate sales, create leads, increase traffic, et cetera. Communicate with your agency to explain what you expect to return from your website investment. If you own a retail company, you may be interested in a monetary return from your investment. This is a different return from someone who is interested in increasing their website popularity in their industry. The return for someone looking to generate more traffic reflects on more phone calls or a more prevalent presence in search engine results. It is important to know your expectations are realistic and know that building a great landing page may not necessarily create sales and an e-commerce website may not improve your marketing value.</p>
-
-									<h4>Our Suggestions</h4>
-									<p>It is recommended that you start small especially if this is a new journey for you. There are many unknowns and you will be going through many "trial and error" situations during the first year. Avoid the DIY route. It will only set you up for failure and it will remove all confidence that a website could be a good investment. Talk to your web design agency about any low initial cost with a higher building capacity. This allows you to build on your smaller website as you grow and as the need arises.</p>
-								</q-card-section>
-							</div>
-						</q-card>
-					</div>
-				</div>
-				<div class="col-xs-12 col-md-4">
-					<div class="q-ma-md">
-						<sidebar-menu />
-					</div>
-				</div>
-			</div>
-		</div>
-	</q-page>
+  <q-page>
+    <div class="q-pa-xl">
+      <div class="full-width row wrap justify-start items-start">
+        <div class="col-xs-12 col-md-8">
+          <div class="q-ma-md">
+            <blog-post
+              :title="title"
+              :date="date"
+              :image="image"
+              :text="text"
+            />
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="q-ma-md">
+            <sidebar-menu />
+          </div>
+        </div>
+      </div>
+    </div>
+  </q-page>
 </template>
 
 <script>
 import SidebarMenu from "../../components/blog/SidebarMenu";
-import RoiChart from "../../components/blog/RoiChart";
+import BlogPost from "../../components/blog/BlogPost";
 export default {
-	name: "RoiPage",
-	components: {
-		SidebarMenu,
-		RoiChart
-	}
+  name: "BlogPage",
+  components: {
+    SidebarMenu,
+    BlogPost
+  },
+  data() {
+    return {
+      title: "Confirmation Dialogs. Ugh...",
+      date: "13 Mar 2017",
+      image: "Undo-Dialog.jpg",
+      text:
+        '<h4>Confirm or Undo?</h4>	<p>Confirmation messages is a concept that has been in every UX Engineer\'s crosshairs for many years. And for the most part, the concept has been slowly evolving and pointing in the right direction. Of course, there were a few hiccups along the process, such as Windows Vista excessive amount of confirmation dialogs. Especially positive confirmations, where the user must physically confirm an action they intended to do. This had numerous negative feedback from users all over the world.<br/><br/>Although I agree that confirmation dialogs protect the application\'s integrity when an accidental deletion or click has occurred, it is completely unnecessary to reiterate to the user that his positive action was successful. There are exceptions to this rule, of course, however, they would be considered the exception, rather than the rule.<br/><br/>A more user-friendly way to ask for confirmation in a way that it is neutral, less invasive, and more intuitive is to allow for "Undo" in a timed element. When you provide the user with an "Undo" timed link, you are respecting his human intentions to either delete or create, meanwhile creating a safety net with an option to undo that action in case it was a mistake.</p><h4>Reading Material</h4><a href="http://ux.stackexchange.com/questions/71960/deletion-confirm-or-undo-which-is-the-better-option-and-why" target="_blank">Deletion: Confirm or Undo? Which is the better option and why?</a>'
+    };
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

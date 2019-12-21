@@ -1,79 +1,46 @@
 <template>
-	<q-page>
-		<div class="q-pa-xl">
-			<div class="full-width row wrap justify-start items-start">
-				<div class="col-xs-12 col-md-8">
-					<div class="q-ma-md">
-						<q-card class="my-card" square>
-							<div class="bg-grey-2">
-								<q-card-section>
-									<h1 class="heading green-text text-h2">Is there an ROI in buying a website?</h1>
-									<div class="text-subtitle1 date-section q-mt-none">
-										<q-icon size="5" name="calendar_today" color="primary" class="icon" />23 Nov 2018
-									</div>
-
-									<img
-										src="https://raw.githubusercontent.com/lotusms/LotusMS/master/blog/full-image/roi.jpg"
-										alt="Is there an ROI in buying a website?"
-									/>
-								</q-card-section>
-
-								<q-card-section>
-									<h4>What is ROI?</h4>
-									<p>The term ROI is commonly mentioned in many business models. It is an acronym for Return On Investment. A goal in which a measure is calculated to decide whether an investment will bring a positive or negative return as an outcome from an investment. In plain words, when you invest an amount of money, you would expect a profit from that investment. However, it doesn’t always work that way. Sometimes an investment results in a loss. The most successful business and enterprises analyze these returns constantly to determine whether to continue investing or abandon the venture. Truth is, there is never a guarantee on any investment. There are ways to analyze data from research to determine if an investment could potentially generate a positive return, however, it is always a case-by-case situation.</p>
-
-									<h4>The Cost</h4>
-									<p>Website pricing differs on many factors. Ranging from free by way of DIY website builders to millions of dollars from a digital agency. See below.</p>
-									<roi-chart />
-									<p>
-										While free sounds very tempting, keep in mind that the actual return from a website is generated from the conversions it creates, rather than from its appearance. In other words, even if you have an eye for design, you may be a stranger to many concepts of User Experience and Digital Marketing that are used to "hack the mind of the users".
-										<br />
-										<br />The next best alternative to free is to hire a freelancer. A freelancer is an independent contractor that often runs a lower level business. Many freelancers possess amazing skills and have very low overhead. Most work from home and in the case of web design, they have a very small operating budget which allows them to provide lower prices. On the other hand, they are not the most suitable option to take on large projects or projects that require a large variety of skillsets.
-										<br />
-										<br />At the furthest end of the spectrum, you can find large digital agencies. These agencies are well structured and have many professionals in their hire focused to work in a specific area of your website: designers, developers, database managers, network managers, content writers, customer support, and more. The downside reflects on their price tag. Because they have a larger overhead, specifically in their payroll department, they are forced to offer higher prices.
-									</p>
-									<h4>Where Do I Fit?</h4>
-									<p>In the middle, you will find a plethora of web design firms that offer great services and a more comfortable cost of investment. It really depends on who would be willing to offer the most for your money without sacrificing the most important requirements you are seeking. We estimate two comfort zones to provide you with some guidance (see chart above).
-									<br />
-									<br />
-
-									Comfort Zone 1 is more fitting for a small company or business exploring digital marketing for the first time, a low marketing budget, or a company who doesn't rely heavily on an internet presence. Be aware, that although most of your client base is not online, in a technology world, a professional website is almost expected from serious businesses.
-									<br />
-									<br />
-
-									Comfort Zone 2 is more suitable for experienced business owners with a heavier interest or dependency on internet traffic. These business models often perform online transactions, capture leads, or have an attentive niche tracking their moves. The option to create ROI directly from the website or by means of attracting customers to their doorstep is a different discussion.</p>
-
-									<h4>How is ROI created?</h4>
-									<p>It all starts with a conversion goal. Depending on your business, your main goal can be to generate sales, create leads, increase traffic, et cetera. Communicate with your agency to explain what you expect to return from your website investment. If you own a retail company, you may be interested in a monetary return from your investment. This is a different return from someone who is interested in increasing their website popularity in their industry. The return for someone looking to generate more traffic reflects on more phone calls or a more prevalent presence in search engine results. It is important to know your expectations are realistic and know that building a great landing page may not necessarily create sales and an e-commerce website may not improve your marketing value.</p>
-
-									<h4>Our Suggestions</h4>
-									<p>It is recommended that you start small especially if this is a new journey for you. There are many unknowns and you will be going through many "trial and error" situations during the first year. Avoid the DIY route. It will only set you up for failure and it will remove all confidence that a website could be a good investment. Talk to your web design agency about any low initial cost with a higher building capacity. This allows you to build on your smaller website as you grow and as the need arises.</p>
-								</q-card-section>
-							</div>
-						</q-card>
-					</div>
-				</div>
-				<div class="col-xs-12 col-md-4">
-					<div class="q-ma-md">
-						<sidebar-menu />
-					</div>
-				</div>
-			</div>
-		</div>
-	</q-page>
+  <q-page>
+    <div class="q-pa-xl">
+      <div class="full-width row wrap justify-start items-start">
+        <div class="col-xs-12 col-md-8">
+          <div class="q-ma-md">
+            <blog-post
+              :title="title"
+              :date="date"
+              :image="image"
+              :text="text"
+            />
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="q-ma-md">
+            <sidebar-menu />
+          </div>
+        </div>
+      </div>
+    </div>
+  </q-page>
 </template>
 
 <script>
 import SidebarMenu from "../../components/blog/SidebarMenu";
-import RoiChart from "../../components/blog/RoiChart";
+import BlogPost from "../../components/blog/BlogPost";
 export default {
-	name: "RoiPage",
-	components: {
-		SidebarMenu,
-		RoiChart
-	}
+  name: "BlogPage",
+  components: {
+    SidebarMenu,
+    BlogPost
+  },
+  data() {
+    return {
+      title: "Using Images On A Website",
+      date: "01 Jun 2016",
+      image: "image-design.jpg",
+      text:
+        '<h4>How do I put an image on my website?</h4><p>As silly as this question may seem, this is something that any web designer or developer can do. Yet, for the inexperienced, this can be a little more challenging. Developers write everything that you want in a website in web developing code. But, we are not going to talk about that in too much detail. If it interests you to learn the skills to do this, you can refer to this <a href="http://www.htmlgoodies.com/primers/html/article.php/3478181" target="_blank">this article</a>.</p><h4>Why should I use images in my website?</h4><p>When talking about images you must first identify the type of image you are trying to add. Is it a logo, a graphic design, or a photo? Where will you locate them and for what purpose? Images are an amazing feature to add to a website for many reasons, such as:</p><ul>	<li>enhance the design,</li>	<li>strengthen a message, </li>	<li>display a product or brand, </li>	<li>add graphics to backgrounds.</li></ul><p>Yet, all these purposes need a different approach, but we will get back to this shortly.<br/><br/> Web designers know that using images increases the website\'s appeal and reduces cognitive friction. You must know, most people are 90% visual and 10% textual beings. Our brains were designed to process shapes and color long before we learned to read and write. For more information on this subject see - <a href="https://designschool.canva.com/blog/visual-marketing/" target="_blank">10 Scientific Reasons Why People Respond To Your Visual Marketing</a>.</p><h4>How do I choose the right image?</h4><p>Separating your own personal preferences at the time to choose the image will be hard. Consider the following when choosing an image:</p><ul>	<li>Your image must be relevant above all.</li>	<li>Ensure the image is not cluttered.</li>	<li>Most screens definitions are wide-screens. We suggest that you shoot your photo in landscape mode to allow for widescreen display.</li>	<li>Images should be at least 1900px wide and then resized to the desired size. If the image is too small, you will notice blurring when the browser size increases.</li>	<li>Take the photo with the object of focus in the center and allow ample room for cropping.</li>	<li>In case of a logo, a web designer will handle the image to its full potential if the image is using an SVG format.</li></ul><h4>Preparing the image for your website.</h4><p>Images come in different sizes and they rarely display on your website in their natural size. Your web designer will alter your image according to the location, size, and use. This includes cropping and sizing. One of the most common mistakes I have come across is that the photographer zoomed into the object of focus. This causes the image to cut the object of focus when it displays on a widescreen. See below the difference between a bad photo and a good photo.</p><div class="row">	<div class="col-md-6">		<div class="header">			<img src="https://raw.githubusercontent.com/lotusms/LotusMS/master/blog/blog-images/bad.jpg" title="Bad Original Photo" alt="Bad Original Photo">		</div>		<div class="body">			<h5 class="caption">Original Photo</h5>		</div>	</div>	<div class="col-md-6">		<div class="header">			<img src="https://raw.githubusercontent.com/lotusms/LotusMS/master/blog/blog-images/bad-display.jpg" title="Bad Displayed on Website" alt="Bad Displayed on Website">		</div>		<div class="body">			<h5 class="caption">Displayed on Website</h5>		</div>	</div></div><p>As you can see above, the image was shot in portrait and the elephant was zoomed in. This would make a great poster on an office or wall, but unfortunately, it will not be as effective for web design.<br/><br/> The photo below was shot in landscape and the elephant was in the center. The photographer left enough environments around the elephant to allow for cropping. Because it is displayed in a wide arrangement, it fits perfectly. If it needed to be cropped to show it in a small container, there is ample room to crop the photo.</p><div class="row">	<div class="col-md-6">		<div class="header">			<img src="https://raw.githubusercontent.com/lotusms/LotusMS/master/blog/blog-images/good.jpg" title="Good Original Photo" alt="Good Original Photo">		</div>		<div class="body">			<h5 class="caption">Original Photo</h5>		</div>	</div>	<div class="col-md-6">		<div class="header">			<img src="https://raw.githubusercontent.com/lotusms/LotusMS/master/blog/blog-images/good-display.jpg" title="Good Displayed on Website" alt="Good Displayed on Website">		</div>		<div class="body">			<h5 class="caption">Displayed on Website</h5>		</div>	</div></div>'
+    };
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

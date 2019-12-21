@@ -1,79 +1,46 @@
 <template>
-	<q-page>
-		<div class="q-pa-xl">
-			<div class="full-width row wrap justify-start items-start">
-				<div class="col-xs-12 col-md-8">
-					<div class="q-ma-md">
-						<q-card class="my-card" square>
-							<div class="bg-grey-2">
-								<q-card-section>
-									<h1 class="heading green-text text-h2">Is there an ROI in buying a website?</h1>
-									<div class="text-subtitle1 date-section q-mt-none">
-										<q-icon size="5" name="calendar_today" color="primary" class="icon" />23 Nov 2018
-									</div>
-
-									<img
-										src="https://raw.githubusercontent.com/lotusms/LotusMS/master/blog/full-image/roi.jpg"
-										alt="Is there an ROI in buying a website?"
-									/>
-								</q-card-section>
-
-								<q-card-section>
-									<h4>What is ROI?</h4>
-									<p>The term ROI is commonly mentioned in many business models. It is an acronym for Return On Investment. A goal in which a measure is calculated to decide whether an investment will bring a positive or negative return as an outcome from an investment. In plain words, when you invest an amount of money, you would expect a profit from that investment. However, it doesn’t always work that way. Sometimes an investment results in a loss. The most successful business and enterprises analyze these returns constantly to determine whether to continue investing or abandon the venture. Truth is, there is never a guarantee on any investment. There are ways to analyze data from research to determine if an investment could potentially generate a positive return, however, it is always a case-by-case situation.</p>
-
-									<h4>The Cost</h4>
-									<p>Website pricing differs on many factors. Ranging from free by way of DIY website builders to millions of dollars from a digital agency. See below.</p>
-									<roi-chart />
-									<p>
-										While free sounds very tempting, keep in mind that the actual return from a website is generated from the conversions it creates, rather than from its appearance. In other words, even if you have an eye for design, you may be a stranger to many concepts of User Experience and Digital Marketing that are used to "hack the mind of the users".
-										<br />
-										<br />The next best alternative to free is to hire a freelancer. A freelancer is an independent contractor that often runs a lower level business. Many freelancers possess amazing skills and have very low overhead. Most work from home and in the case of web design, they have a very small operating budget which allows them to provide lower prices. On the other hand, they are not the most suitable option to take on large projects or projects that require a large variety of skillsets.
-										<br />
-										<br />At the furthest end of the spectrum, you can find large digital agencies. These agencies are well structured and have many professionals in their hire focused to work in a specific area of your website: designers, developers, database managers, network managers, content writers, customer support, and more. The downside reflects on their price tag. Because they have a larger overhead, specifically in their payroll department, they are forced to offer higher prices.
-									</p>
-									<h4>Where Do I Fit?</h4>
-									<p>In the middle, you will find a plethora of web design firms that offer great services and a more comfortable cost of investment. It really depends on who would be willing to offer the most for your money without sacrificing the most important requirements you are seeking. We estimate two comfort zones to provide you with some guidance (see chart above).
-									<br />
-									<br />
-
-									Comfort Zone 1 is more fitting for a small company or business exploring digital marketing for the first time, a low marketing budget, or a company who doesn't rely heavily on an internet presence. Be aware, that although most of your client base is not online, in a technology world, a professional website is almost expected from serious businesses.
-									<br />
-									<br />
-
-									Comfort Zone 2 is more suitable for experienced business owners with a heavier interest or dependency on internet traffic. These business models often perform online transactions, capture leads, or have an attentive niche tracking their moves. The option to create ROI directly from the website or by means of attracting customers to their doorstep is a different discussion.</p>
-
-									<h4>How is ROI created?</h4>
-									<p>It all starts with a conversion goal. Depending on your business, your main goal can be to generate sales, create leads, increase traffic, et cetera. Communicate with your agency to explain what you expect to return from your website investment. If you own a retail company, you may be interested in a monetary return from your investment. This is a different return from someone who is interested in increasing their website popularity in their industry. The return for someone looking to generate more traffic reflects on more phone calls or a more prevalent presence in search engine results. It is important to know your expectations are realistic and know that building a great landing page may not necessarily create sales and an e-commerce website may not improve your marketing value.</p>
-
-									<h4>Our Suggestions</h4>
-									<p>It is recommended that you start small especially if this is a new journey for you. There are many unknowns and you will be going through many "trial and error" situations during the first year. Avoid the DIY route. It will only set you up for failure and it will remove all confidence that a website could be a good investment. Talk to your web design agency about any low initial cost with a higher building capacity. This allows you to build on your smaller website as you grow and as the need arises.</p>
-								</q-card-section>
-							</div>
-						</q-card>
-					</div>
-				</div>
-				<div class="col-xs-12 col-md-4">
-					<div class="q-ma-md">
-						<sidebar-menu />
-					</div>
-				</div>
-			</div>
-		</div>
-	</q-page>
+  <q-page>
+    <div class="q-pa-xl">
+      <div class="full-width row wrap justify-start items-start">
+        <div class="col-xs-12 col-md-8">
+          <div class="q-ma-md">
+            <blog-post
+              :title="title"
+              :date="date"
+              :image="image"
+              :text="text"
+            />
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="q-ma-md">
+            <sidebar-menu />
+          </div>
+        </div>
+      </div>
+    </div>
+  </q-page>
 </template>
 
 <script>
 import SidebarMenu from "../../components/blog/SidebarMenu";
-import RoiChart from "../../components/blog/RoiChart";
+import BlogPost from "../../components/blog/BlogPost";
 export default {
-	name: "RoiPage",
-	components: {
-		SidebarMenu,
-		RoiChart
-	}
+  name: "BlogPage",
+  components: {
+    SidebarMenu,
+    BlogPost
+  },
+  data() {
+    return {
+      title: "Removing The Hashtag In Angular",
+      date: "18 Nov 2016",
+      image: "nohashtag.jpg",
+      text:
+        "<p>Angular is a Single Page Application framework designed to generate views inside your index page to eliminate refreshing the page and reloading every component every time you navigate from page to page. Instead, the index page loads all main components, and the pages get injected into the body. This generates a hashtag in the URL which makes it less than appealing. Before you follow this tutorial on how to remove this hashtag make sure you understand AngularJS and its routing module. AngularJS documentation can be found in the <a href=\"https://docs.angularjs.org/api\" target=\"_blank\">AngularJS API Docs</a>.</p><h4>The Tools</h4><p>First of all, we need to know what tools we need to have in place.</p><ul><li><strong>CMD</strong> - You will need to have at least 2 Command Prompt screens open and minified in the tray. Make sure your CMD is open with administrator permission and it is routed to the application folder.<ul><li><strong>Server CMD</strong> - This CMD window runs your server.</li><li><strong>Depedencies Install CMD</strong> - You will need this CMD window to install any dependencies through npm, bower, or gulp, git to your repo, and communicate with your application.</li><li><strong>Gulp CMD</strong> - This CMD window runs your Gulp for your SASS compiling, BrowserSync, any other Gulp task etc. (Optional).</li><li><strong>MongoDB CMD</strong> - This CMD window runs your Mongo Database connection. (Optional, but if you are running a MEAN stack, you will need this window opened).</li></ul></li><li><strong>IDE</strong> - Any IDE of your preference is fine. I prefer <a href=\"https://www.jetbrains.com/webstorm/\" target=\"_blank\">WebStorm</a>, but it is entirely up to you.</li></ul><h4>The Foundation</h4><p>If you are reading this tutorial, I am assuming you have installed some or most of these. If you did, you can skip this part.</p><ul><li><strong>NodeJS</strong> - You must install <a href=\"https://nodejs.org/en/\" target=\"_blank\">NodeJS</a> locally in your application folder or globally. Simply download the binaries/installer you need (Windows, Mac, Linux, etc), and follow the steps until it is installed. After you've done that, go to your CMD and assuming that is already pointing to the directory path of your application, write<pre><code class=\"language-javascript line-numbers\">node -v</code></pre> and you should get the version of node you installed.</li><li><strong>NPM</strong> - Now that NodeJS is installed, you need to install npm. In your CMD window, type<pre><code class=\"language-javascript line-numbers\">npm init</code></pre>This allows you to create a <code>package.json</code> file where all your dependencies will be stored. You can simply hit enter through all the questions if you are not interested in documenting the author's name or application's name etc. It really doesn't matter. Once you visually inspect the presence of a <code>package.json</code> file in your root type<pre><code class=\"language-javascript line-numbers\">npm install -g</code></pre>Once this is finished, NPM is installed and you should have now a <code>node_modules</code> folder in your application root. For extra security, if you check your <code>npm -v</code>, you should get a version response just like you did with node but the presence of the <code>node_modules</code> folder and the <code>package.json</code> file are proof enough... I think.</li><li><strong>Proxy Clearing</strong> - I have found that the most common problem reporting install failures are that many computer systems are working behind a proxy. Clearing your proxy or declaring one is the fix to this. If you are working from home and you need to clear the proxy, type this in your CMD<pre><code class=\"language-javascript line-numbers\">npm config set proxy null\nnpm config set https-proxy null</code></pre>Conversely, replace null with the URL or IP address of your proxy if you are behind a proxy. Your network manager will provide this for you.</li><li><strong>Git</strong> - You need Git so that you can install Bower. But also, if you are going to pull/push to a repository of your own. Go to <a href=\"https://git-scm.com/\" target=\"_blank\">Git</a> and download/install.  After it is all done you need to initialize it in your application by typing in your CMD<pre><code class=\"language-javascript line-numbers\">git init</code></pre></li><li><strong>Bower</strong> - Do you need bower? Not necessarily, but it is always good to have since some  dependencies live in bower. So to install it, first create your <code>bower.json</code> just like you did with NPM type<pre><code class=\"language-javascript line-numbers\">bower init</code></pre>and after that<pre><code class=\"language-javascript line-numbers\">npm install -g bower</code></pre>You can now inspect that you have a <code>bower_components</code> folder in your application and a <code>bower.json</code> file as well.</li><li><strong>Gulp</strong> - Entirely optional but extremely helpful if you want some really cool tools like  BrowerSync or SASS compiling, etc. Also, it doesn't hurt to download it because if I understand it correctly, you will need it to make this entire tutorial work at the end when Express is running. To install Gulp type<pre><code class=\"language-javascript line-numbers\">npm install -g gulp</code></pre>and to install it as an NPM dependency type<pre><code class=\"language-javascript line-numbers\">npm install --save-dev gulp</code></pre>Once that is done, go to your application and manually add a <code>gulpfile.js</code>. In here you will add your gulp watches so that you can run Gulp. To save some useful Gulp dependencies like SASS compiling type these <code>npm install gulp gulp-sass --save-dev</code>, <code>npm install --save-dev gulp-server-livereload</code> and <code>npm install --save-dev browser-sync</code>. These will make them available to you so can set up your Gulp watches and builds.</li><li><strong>Angular</strong> - I am not going to go too in-depth with this because it should be pretty  straightforward. You go to your CMD and you install it through NPM or Bower and you do the same for all modules you need. DONE! The only thing I would say is, don't download Angular directly in JS folders, Use your package management tools (NPM/Bower). They are there for a reason and they check on many dependencies as you try to install other modules that may or may not work with the version of Angular you have installed.</li><li><strong>Express</strong> - I swear, it's almost as if we have to download the internet just to get one thing working! Well, c'est la vie, so let's keep going. Now, it is time to install a server. By now you have AngularJS and NodeJS installed and you are about to have Express installed too. You are almost a MEAN stack monster! Except, you may not have MongoDB to complete the stack but you don�t need it in this tutorial. To install express type this<pre><code class=\"language-javascript line-numbers\">npm install express --save</code></pre>Once that is finished. manually add a <code>server.js</code> file in your directory root. Make sure it is on your first level of your root. Do not put it in any folder. Now you have some code to add in here.<pre><code class=\"language-javascript line-numbers\">var express = require('express')\;\nvar server = express()\;\n\nserver.use(express.static(__dirname + '/'))\;\nserver.set('views', __dirname + 'views')\;\nserver.set('js', __dirname + 'js')\;\nserver.set('css', __dirname + 'css')\;\nserver.get('/', function(req, res){res.render('index.ejs')\;})\;\nserver.all('/*', function(req, res, next) {res.sendFile('index.html', { root: __dirname })\;})\;\n\nvar port = 3006\;\n\nserver.listen(port, function(){console.log('server listening on port' + port)})\;</code></pre> But we are not done yet. The last thing you need is to install ejs or you will get errors. Not sure why, I just do it, so type this in your CMD<pre><code class=\"language-javascript line-numbers\">npm install ejs --save</code></pre>Now all you have to do to run your server is simply type this in your CMD and that will start the server. This is the last time you use this particular CDM window. You will minimize it and start a new one for anything else you need to do <pre><code class=\"language-javascript line-numbers\">node server.js</code></pre>Now if you go to <code>localhost:3006</code> you will see your app is started.</li></ul><h4>Let's Angular!</h4><p>Wow! It almost felt like we were never going to get here. I apologize, but I assure you, this is probably the most concise and complete tutorial you will ever find all in one place. And I have to consider some beginners will stop by as well so I had to break it down. But here is the angular part you probably are looking for:</p><div class=\"text-white bg-info q-py-lg q-px-md\" style=\"margin:20px auto\"><i class=\"fa fa-info fa-round\"></i> You will still need the Express section above. Even if you skipped the Tools section, go back and read only the Express. This is extremely important because once you have removed the hashtag, as I am about to show you if you go to a page in your application and you refresh the page, you will get an error. Express will allow you to refresh your non-hashtag URL.</div><p><strong>Angular Routing</strong> - Most people use ngRoute. That is ok, but I prefer angular-ui-router because it already contains all that it's in ngRoute and it still has more features. So let's use that in this tutorial. If you have a CMD with express running, make sure you open a new CMD window pointing to your application and type<pre><code class=\"language-javascript line-numbers\">npm install --save angular-ui-router</code></pre>Now that you have this installed make sure reference it in your application <code>&lt;head&gt;</code>and let's go to our <code>app.js</code>app.js and build our routing configuration as follows<pre><code class=\"language-javascript line-numbers\">var app = angular.module('ngCribs', ['ui.router'])\;\napp.config([\n\t'$stateProvider', \n\t'$urlRouterProvider', \n\t'$locationProvider', \n\tfunction($stateProvider, $urlRouterProvider, $locationProvider) {\n\t\t$stateProvider\n\t\t\t.state('index', {url: '/',templateUrl: 'views/partials/home.html'})\n\t\t\t.state('listings', {url: '/listings',templateUrl: 'views/partials/listings-list.html'})\;\n\t\t$urlRouterProvider.otherwise('/')\; \n\t\t$locationProvider.html5Mode(true)\;\n\t}\n])\;</code></pre>Make sure your template paths are correct or course and your app module name match your own, and if you have other modules, they are included in your own module configuration. So, basically, be careful copying and  pasting this code as it will still need some custom work to your own application. Now we need to go back to our index page and specify our base. Add this to your<code>&lt;head&gt;</code>.<pre class=\"language-markup\"><code>&lt;base href=\"/\"&gt;</code></pre>And now, for the finale! Go to your links throughout your site and swiftly, mercilessly, and with all the hate you can gather, delete all those <code>#</code> from your paths. After all this work you've done, they are  your enemy!</p>        <h4>Conclusion</h4><p>This concludes the tutorial. I hope you found it instructional and keep visiting as I will start posting some more tutorials here eventually.</p>"
+    };
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

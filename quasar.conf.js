@@ -75,7 +75,9 @@ module.exports = function(ctx) {
         "QInput",
         "QSeparator",
         "QUploader",
-        "QEditor"
+        "QEditor",
+        "QBanner",
+        "QExpansionItem"
       ],
 
       directives: ["Ripple"],
