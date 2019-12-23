@@ -9,26 +9,18 @@
             name="calendar_today"
             color="primary"
             class="icon"
-          />{{ date }}
+          />{{ date | niceDate }}
         </div>
 
         <img
           class="q-mb-md shadow-3"
-          :src="
-            `https://raw.githubusercontent.com/lotusms/LotusMS/master/blog/full-image/${image}`
-          "
+          :src="image"
           alt="Is there an ROI in buying a website?"
         />
       </q-card-section>
 
       <q-card-section>
         <blog-text :text="text" />
-        <blog-component
-          v-if="$route.path === '/is-there-an-roi-in-buying-a-website'"
-        >
-          <roi-chart />
-        </blog-component>
-        <blog-text :text="textfollow" />
       </q-card-section>
     </div>
   </q-card>
@@ -38,10 +30,16 @@
 import BlogText from "./BlogText";
 import BlogComponent from "./BlogComponent";
 import RoiChart from "../blog/RoiChart";
+import { date } from "quasar";
 export default {
   name: "BlogPost",
   components: { BlogText, BlogComponent, RoiChart },
   props: ["title", "image", "text", "date", "textfollow"],
+  filters: {
+    niceDate(value) {
+      return date.formatDate(value, "MMM Do, YYYY");
+    }
+  },
   data() {
     return {
       component: "roichart"

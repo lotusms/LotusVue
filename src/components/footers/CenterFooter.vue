@@ -5,10 +5,10 @@
       <q-item
         v-for="(blog, index) in blogs"
         :key="index"
-        :to="`/${blog.url}`"
+        :to="`/blog/${blog.id}`"
+        @click="goto"
         clickable
         v-ripple
-        exact
       >
         <q-item-section avatar>
           <q-avatar>
@@ -21,7 +21,7 @@
         </q-item-section>
         <q-item-section side top class="date-section">
           <q-icon size="5" name="calendar_today" color="primary" class="icon" />
-          <span>{{ blog.date }}</span>
+          <span>{{ blog.date | niceDate }}</span>
         </q-item-section>
       </q-item>
     </q-list>
@@ -29,17 +29,27 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import MixinGetPosts from "../../mixins/get-posts";
+import { date } from "quasar";
 
 export default {
   name: "CenterFooter",
+  filters: {
+    niceDate(value) {
+      return date.formatDate(value, "MMM Do, YYYY");
+    }
+  },
+  mixins: [MixinGetPosts],
   data() {
     return {
-      heading: "Knowledge Center"
+      heading: "Knowledge Center",
+      blogs: []
     };
   },
-  computed: {
-    ...mapGetters("blogs", ["blogs"])
+  methods: {
+    goto() {
+      this.$router.go();
+    }
   }
 };
 </script>

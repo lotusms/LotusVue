@@ -2,6 +2,7 @@ var firebase = require("firebase/app");
 
 require("firebase/auth");
 require("firebase/database");
+require("firebase/storage");
 
 var firebaseConfig = {
   apiKey: "AIzaSyC7yCV4nB1ENtbNFPHxys5TCXJ2if8Vclk",
@@ -15,7 +16,7 @@ var firebaseConfig = {
 
 let firebaseApp = firebase.initializeApp(firebaseConfig);
 let firebaseDb = firebaseApp.database();
-// let fbStorage = firebaseApp.storage();
+let fbStorage = firebaseApp.storage();
 let firebaseAuth = firebaseApp.auth();
 
-export { firebaseAuth, firebaseDb };
+export { firebaseAuth, firebaseDb, fbStorage };

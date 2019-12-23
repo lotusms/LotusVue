@@ -1,143 +1,209 @@
 <template>
   <q-page>
     <div class="q-pa-xl full-width full-height column">
-      <div class="col-xs-12">
-        <h1
-          class="heading text-secondary bottom-border text-center justify-center"
-        >
-          Create Blog
-        </h1>
+      <div class="row">
+        <div class="col-xs-12">
+          <h1
+            class="heading text-secondary bottom-border text-center justify-center"
+          >
+            Create Blog
+          </h1>
+        </div>
       </div>
+      <div class="full-width row justify-start items-start content-start">
+        <div class="col-xs-12 col-md-8">
+          <q-card class="my-card q-ma-sm" square style>
+            <div class="bg-grey-2">
+              <q-card-section>
+                <h2 class="green-text q-mb-none">Add New Post</h2>
+              </q-card-section>
 
-      <div class="col-xs-12">
-        <q-card class="my-card" square style>
-          <div class="bg-grey-2">
-            <q-card-section>
-              <h2 class="green-text q-mb-none">New blog post</h2>
-            </q-card-section>
-
-            <q-card-section>
-              <q-form @submit.prevent="submitBlog">
-                <div class="column q-mb-lg">
-                  <label class="weight-bold">Title</label>
-                  <q-input
-                    filled
-                    dense
-                    v-model="blogToSubmit.title"
-                    hint="The post title"
-                    class="col"
-                    :rules="[val => !!val || 'Field is required']"
-                  />
-                </div>
-                <div class="column q-mb-lg">
-                  <label class="weight-bold">Permalink</label>
-                  <q-input
-                    filled
-                    v-model="blogToSubmit.url"
-                    label="Permalink"
-                    hint="ex: my-great-post"
-                    class="col"
-                    :rules="[val => !!val || 'Field is required']"
-                  />
-                </div>
-
-                <div class="column q-mb-lg">
-                  <label class="weight-bold">Upload Image</label>
-                  <div class="row">
-                    <q-btn
-                      color="primary-alt"
-                      class="q-mr-lg"
-                      @click="onPickFile()"
-                      >Upload</q-btn
-                    >
+              <q-card-section>
+                <q-form @submit.prevent="submitBlog">
+                  <div class="column q-mb-lg">
+                    <label class="weight-bold">Title</label>
                     <q-input
                       filled
-                      v-model="blogToSubmit.image"
-                      type="file"
-                      style="display:none"
-                      ref="fileInput"
-                      accept=".jpg, image/*"
-                      @change="onFilePicked"
+                      dense
+                      v-model="blogToSubmit.title"
+                      hint="The post title"
+                      class="col"
+                      :rules="[val => !!val || 'Field is required']"
                     />
-                    <img :src="blogToSubmit.image" alt="file uploaded" />
                   </div>
-                </div>
 
-                <div class="column q-mb-lg">
-                  <label class="weight-bold">Upload Thumbnail</label>
-                  <div class="row">
-                    <q-btn
-                      color="primary-alt"
-                      class="q-mr-lg"
-                      @click="onPickThumb()"
-                      >Upload</q-btn
-                    >
+                  <div class="column q-mb-lg">
+                    <label class="weight-bold">Upload Image</label>
+                    <div class="row">
+                      <q-btn
+                        color="primary-alt"
+                        class="q-mr-lg"
+                        @click="onPickFile()"
+                        >Upload</q-btn
+                      >
+                      <q-input
+                        filled
+                        v-model="blogToSubmit.image"
+                        type="file"
+                        style="display:none"
+                        ref="fileInput"
+                        accept=".jpg, image/*"
+                        @change="onFilePicked"
+                      />
+                      <img :src="blogToSubmit.image" alt="file uploaded" />
+                    </div>
+                  </div>
+
+                  <div class="column q-mb-lg">
+                    <label class="weight-bold">Upload Thumbnail</label>
+                    <div class="row">
+                      <q-btn
+                        color="primary-alt"
+                        class="q-mr-lg"
+                        @click="onPickThumb()"
+                        >Upload</q-btn
+                      >
+                      <q-input
+                        filled
+                        v-model="blogToSubmit.thumb"
+                        type="file"
+                        style="display:none"
+                        ref="thumbInput"
+                        accept=".jpg, image/*"
+                        @change="onThumbPicked"
+                      />
+                      <img :src="blogToSubmit.thumb" alt="thumbnail uploaded" />
+                    </div>
+                  </div>
+
+                  <div class="column q-mb-lg">
+                    <label class="weight-bold">Excerpt</label>
                     <q-input
                       filled
-                      v-model="blogToSubmit.thumb"
-                      type="file"
-                      style="display:none"
-                      ref="thumbInput"
-                      accept=".jpg, image/*"
-                      @change="onThumbPicked"
+                      v-model="blogToSubmit.excerpt"
+                      label="Excerpt"
+                      hint="Sneek peak to the content"
+                      class="col"
+                      :rules="[val => !!val || 'Field is required']"
                     />
-                    <img :src="blogToSubmit.thumb" alt="thumbnail uploaded" />
                   </div>
-                </div>
 
-                <div class="column q-mb-lg">
-                  <label class="weight-bold">Post Content</label>
-                  <q-editor
-                    v-model="blogToSubmit.text"
-                    class="col"
-                    :toolbar="[
-                      ['bold', 'italic', 'strike', 'underline'],
-                      [
-                        {
-                          label: $q.lang.editor.formatting,
-                          icon: $q.iconSet.editor.formatting,
-                          list: 'no-icons',
-                          options: ['p', 'h3', 'h4', 'h5', 'h6', 'code']
-                        },
-                        {
-                          label: $q.lang.editor.fontSize,
-                          icon: $q.iconSet.editor.fontSize,
-                          fixedLabel: true,
-                          fixedIcon: true,
-                          list: 'no-icons',
-                          options: [
-                            'size-1',
-                            'size-2',
-                            'size-3',
-                            'size-4',
-                            'size-5',
-                            'size-6',
-                            'size-7'
-                          ]
-                        }
-                      ],
-                      ['quote', 'unordered', 'ordered', 'outdent', 'indent'],
-                      ['viewsource']
-                    ]"
+                  <div class="column q-mb-lg">
+                    <label class="weight-bold">Post Content</label>
+                    <q-editor
+                      v-model="blogToSubmit.text"
+                      class="col"
+                      :toolbar="[
+                        ['bold', 'italic', 'strike', 'underline'],
+                        [
+                          {
+                            label: $q.lang.editor.formatting,
+                            icon: $q.iconSet.editor.formatting,
+                            list: 'no-icons',
+                            options: ['p', 'h3', 'h4', 'h5', 'h6', 'code']
+                          },
+                          {
+                            label: $q.lang.editor.fontSize,
+                            icon: $q.iconSet.editor.fontSize,
+                            fixedLabel: true,
+                            fixedIcon: true,
+                            list: 'no-icons',
+                            options: [
+                              'size-1',
+                              'size-2',
+                              'size-3',
+                              'size-4',
+                              'size-5',
+                              'size-6',
+                              'size-7'
+                            ]
+                          }
+                        ],
+                        ['quote', 'unordered', 'ordered', 'outdent', 'indent'],
+                        ['viewsource']
+                      ]"
+                    />
+                  </div>
+                  <q-btn
+                    color="primary-alt"
+                    type="submit"
+                    label="Submit Post"
                   />
-                </div>
-                <q-btn color="primary-alt" type="submit" label="Submit Post" />
-              </q-form>
-            </q-card-section>
-          </div>
-        </q-card>
+                </q-form>
+              </q-card-section>
+            </div>
+          </q-card>
+        </div>
+
+        <div class="col-xs-12 col-md-4">
+          <q-card class="my-card q-ma-sm" square style>
+            <div class="bg-grey-2">
+              <q-card-section>
+                <h2 class="green-text q-mb-none">Current Posts</h2>
+              </q-card-section>
+
+              <q-card-section>
+                <q-list separator>
+                  <q-item
+                    v-for="(blog, index) in blogs"
+                    :key="index"
+                    clickable
+                    v-ripple
+                    exact
+                  >
+                    <q-item-section avatar>
+                      <q-avatar>
+                        <img
+                          :src="blog.thumb"
+                          :alt="blog.title"
+                          class="avatar"
+                        />
+                      </q-avatar>
+                    </q-item-section>
+
+                    <q-item-section>
+                      <q-item-label lines="2">{{ blog.title }}</q-item-label>
+                    </q-item-section>
+                    <q-item-section side top class="date-section">
+                      <q-icon
+                        size="25"
+                        name="edit"
+                        color="primary"
+                        class="icon"
+                      />
+                      <q-icon
+                        size="15"
+                        name="delete_forever"
+                        color="negative"
+                        class="icon"
+                        @click.stop="deleteBlog(id)"
+                      />
+                    </q-item-section>
+                  </q-item>
+                </q-list>
+              </q-card-section>
+            </div>
+          </q-card>
+        </div>
       </div>
     </div>
   </q-page>
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import Butter from "buttercms";
-export const butter = Butter("96cab44371a94ebbf9835d99e990f10d47827a49");
+import { mapState, mapActions, mapGetters } from "vuex";
+import { uid } from "quasar";
+import MixinGetPosts from "../mixins/get-posts";
+import { date } from "quasar";
 
 export default {
   name: "CreateBlog",
+  mixins: [MixinGetPosts],
+  filters: {
+    niceDate(value) {
+      return date.formatDate(value, "MMM Do, YYYY");
+    }
+  },
   data() {
     return {
       imageUrl: null,
@@ -145,16 +211,31 @@ export default {
         title: "",
         url: "",
         text: "",
+        excerpt: "",
         image: null,
         thumb: null,
+        blog_id: uid(),
         date: Date.now()
-      }
+      },
+      blogs: []
     };
   },
   methods: {
-    ...mapActions("blogs", ["addBlog"]),
+    ...mapActions("blogs", ["addBlog", "deleteBlog"]),
+    deleteBlog(id) {
+      this.deleteBlog(id);
+    },
     submitBlog() {
       this.addBlog(this.blogToSubmit);
+      this.clearFields();
+    },
+    clearFields() {
+      this.blogToSubmit.title = "";
+      this.blogToSubmit.url = "";
+      this.blogToSubmit.text = "";
+      this.blogToSubmit.excerpt = "";
+      this.blogToSubmit.image = null;
+      this.blogToSubmit.thumb = null;
     },
     onPickFile() {
       this.$refs.fileInput.$el.click();
@@ -196,4 +277,24 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.date-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  .avatar {
+    border: 2px solid $accent;
+    img {
+      border: 2px solid $accent;
+    }
+  }
+  .icon {
+    font-size: 20px;
+    margin-left: 8px;
+  }
+  span {
+    font-size: 13px;
+  }
+}
+</style>

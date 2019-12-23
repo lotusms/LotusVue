@@ -11,8 +11,8 @@
       >
         <div class="q-mb-lg q-px-lg">
           <q-card class="my-card" square style>
-            <a :href="`#/${blog.url}`">
-              <div class="ms-thumbnail ms-thumbnail-diagonal">
+            <div class="ms-thumbnail ms-thumbnail-diagonal">
+              <router-link :to="`/blog/${blog.id}`">
                 <img :src="blog.image" :alt="blog.title" />
                 <figcaption class="ms-thumbnail-caption text-center">
                   <div class="ms-thumbnail-caption-content">
@@ -21,8 +21,8 @@
                     </h5>
                   </div>
                 </figcaption>
-              </div>
-            </a>
+              </router-link>
+            </div>
             <div class="bg-grey-2">
               <q-card-section>
                 <h5 class="green-text q-mb-none">{{ blog.title }}</h5>
@@ -37,13 +37,13 @@
                 </div>
               </q-card-section>
 
-              <q-card-section v-html="blog.text">...</q-card-section>
+              <q-card-section v-html="blog.excerpt">...</q-card-section>
 
               <q-card-section>
                 <q-btn
                   color="primary-alt full-width"
                   label="Read More"
-                  :to="`/${blog.url}`"
+                  :to="`/blog/${blog.id}`"
                 />
               </q-card-section>
             </div>
@@ -51,40 +51,16 @@
         </div>
       </div>
     </div>
-    <!-- <ul class="row justify-center no-bullet">
-      <li>
-        <a href="#" @click="showPrev">
-          <q-icon name="chevron_left" size="sm" />
-        </a>
-      </li>
-      <li v-for="pageNumber in totalPages">
-        <a
-          href="#"
-          @click="setPage(pageNumber)"
-          :class="{
-            current: currentPage === pageNumber,
-            last:
-              pageNumber == totalPages &&
-              Math.abs(pageNumber - currentPage) > 3,
-            first: pageNumber == 1 && Math.abs(pageNumber - currentPage) > 3
-          }"
-          >{{ pageNumber }}</a
-        >
-      </li>
-      <li>
-        <a href="#" @click="showNext">
-          <q-icon name="chevron_right" size="sm" />
-        </a>
-      </li>
-    </ul> -->
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import MixinGetPosts from "../../mixins/get-posts";
 import { date } from "quasar";
+
 export default {
   name: "Blog",
+  mixins: [MixinGetPosts],
   filters: {
     niceDate(value) {
       return date.formatDate(value, "MMM Do, YYYY");
@@ -92,49 +68,8 @@ export default {
   },
   data() {
     return {
-      currentPage: 0,
-      itemsPerPage: 2,
-      resultCount: 0
+      blogs: []
     };
-  },
-  computed: {
-    ...mapGetters("blogs", ["blogs"]),
-    totalPages: function() {
-      return Math.ceil(this.resultCount / this.itemsPerPage);
-    },
-    isStartPage: function() {
-      return this.currentPage == 0;
-    },
-    isEndPage: function() {
-      return this.currentPage * this.itemsPerPage >= this.links.length;
-    }
-  },
-  methods: {
-    setPage: function(pageNumber) {
-      this.currentPage = pageNumber;
-    },
-    paginate: function() {
-      if (!this.links || this.links.length != this.links.length) {
-        return;
-      }
-      this.resultCount = this.links.length;
-      if (this.currentPage >= this.totalPages) {
-        this.currentPage = this.totalPages;
-      }
-      var index = this.currentPage * this.itemsPerPage - this.itemsPerPage;
-      return this.links.slice(index, index + this.itemsPerPage);
-    },
-    showPrev: function() {
-      if (this.isStartPage) return;
-      this.currentPage--;
-    },
-    showNext: function() {
-      if (this.isEndPage) return;
-      this.currentPage++;
-    }
-  },
-  created: function() {
-    this.setPage(1);
   }
 };
 </script>

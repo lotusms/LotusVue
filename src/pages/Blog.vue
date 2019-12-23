@@ -12,21 +12,16 @@
       <div class="col-shrink col-xs-12 col-sm-grow col-md-grow">
         <blog />
       </div>
-
-      <!-- <div class="col-shrink col-xs-12 col-sm-3 col-md-3">
-        <sidebar-menu />
-      </div> -->
     </div>
   </q-page>
 </template>
 
 <script>
 import Blog from "../components/blog/Blog";
-import SidebarMenu from "../components/blog/SidebarMenu";
 
 export default {
   name: "BlogPage",
-  components: { SidebarMenu, Blog },
+  components: { Blog },
   data() {
     return {
       pagetitle: "Web Blog & Knowledge Center",
