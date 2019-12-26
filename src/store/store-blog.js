@@ -4,8 +4,7 @@ import { firebaseDb, firebaseAuth } from "boot/firebase";
 import { showErrorMessage } from "../functions/function-show-error-message";
 
 const state = {
-  blogs: {},
-  search: ""
+  blogs: {}
 };
 
 const actions = {
@@ -23,14 +22,7 @@ const actions = {
     };
     dispatch("fbAddBlog", payload);
   },
-  setSearch({ commit }, value) {
-    commit("setSearch", value);
-  },
-  setSort({ commit }, value) {
-    commit("setSort", value);
-  },
   fbReadData({ commit }) {
-    let userId = firebaseAuth.currentUser.uid;
     let userBlogs = firebaseDb.ref("blogs/");
 
     //initial check for data
@@ -100,15 +92,18 @@ const actions = {
       }
     });
   },
-  fbDeleteBlog({}, blogId) {
-    let blogRef = firebaseDb.ref("blogs/" + blogId);
-    blogRef.remove(error => {
-      if (error) {
-        showErrorMessage(error.message);
-      } else {
-        console.log("Blog deleted");
-      }
-    });
+  fbDeleteBlog({}, state, blogId, payload) {
+    let userId = firebaseAuth.currentUser.uid;
+    console.log(userId);
+    let blogRef = firebaseDb.ref("blogs/" + payload.id);
+    // let blogRef = firebaseDb.ref("blogs/" + userId + "/" + blogId);
+    // blogRef.remove(error => {
+    //   if (error) {
+    //     showErrorMessage(error.message);
+    //   } else {
+    //     console.log("Blog deleted");
+    //   }
+    // });
   }
 };
 
@@ -121,15 +116,6 @@ const mutations = {
   },
   addBlog(state, payload) {
     Vue.set(state.blogs, payload.id, payload.blog);
-  },
-  clearBlogs(state) {
-    state.blogs = {};
-  },
-  setSearch(state, value) {
-    state.search = value;
-  },
-  setSort(state, value) {
-    state.sort = value;
   },
   setBlogsDownloaded(state, value) {
     state.blogsDownloaded = value;

@@ -176,7 +176,7 @@
                         name="delete_forever"
                         color="negative"
                         class="icon"
-                        @click.stop="deleteBlog(id)"
+                        @click="removeBlog(blog)"
                       />
                     </q-item-section>
                   </q-item>
@@ -195,6 +195,13 @@ import { mapState, mapActions, mapGetters } from "vuex";
 import { uid } from "quasar";
 import MixinGetPosts from "../mixins/get-posts";
 import { date } from "quasar";
+import { firebaseDb, firebaseAuth } from "../boot/firebase";
+
+let blogRef = firebaseDb.ref("blogs");
+
+let keyId = blogRef.key;
+
+let blogRef2 = firebaseDb.ref("blogs" + keyId);
 
 export default {
   name: "CreateBlog",
@@ -206,6 +213,7 @@ export default {
   },
   data() {
     return {
+      // id: this.id,
       imageUrl: null,
       blogToSubmit: {
         title: "",
@@ -220,14 +228,18 @@ export default {
       blogs: []
     };
   },
+  // props: ["blog", "id"],
   methods: {
-    ...mapActions("blogs", ["addBlog", "deleteBlog"]),
-    deleteBlog(id) {
-      this.deleteBlog(id);
-    },
-    submitBlog() {
-      this.addBlog(this.blogToSubmit);
-      this.clearFields();
+    // ...mapActions("blogs", ["deleteBlog"]),
+    addBlog() {
+      blogRef.push(this.blogToSubmit);
+      this.blogToSubmit.title = "";
+      this.blogToSubmit.text = "";
+      this.blogToSubmit.excerpt = "";
+      this.blogToSubmit.image = "";
+      this.blogToSubmit.thumb = "";
+      this.blogToSubmit.blog_id = "";
+      this.blogToSubmit.date = "";
     },
     clearFields() {
       this.blogToSubmit.title = "";
@@ -236,6 +248,14 @@ export default {
       this.blogToSubmit.excerpt = "";
       this.blogToSubmit.image = null;
       this.blogToSubmit.thumb = null;
+    },
+    submitBlog() {
+      this.addBlog();
+      this.clearFields();
+    },
+    removeBlog: function(blog) {
+      console.log(blog);
+      blogRef2.remove();
     },
     onPickFile() {
       this.$refs.fileInput.$el.click();

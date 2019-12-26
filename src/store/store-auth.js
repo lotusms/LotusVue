@@ -30,6 +30,7 @@ const actions = {
       .signInWithEmailAndPassword(payload.email, payload.password)
       .then(response => {
         console.log(response);
+        this.$router.push("/create-blog");
       })
       .catch(error => {
         showErrorMessage(error.message);

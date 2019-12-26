@@ -49,7 +49,7 @@
                       Get in touch with us!
                     </h5>
                     <q-form
-                      @submit="onSubmit"
+                      @submit.prevent="sendMail"
                       @reset="onReset"
                       class="q-gutter-md"
                     >
@@ -61,6 +61,7 @@
                         color="white"
                         bg-color="grey-7"
                         v-model="name"
+                        name="user_name"
                         hint="What would you like us to call you?"
                         label="Name *"
                         lazy-rules
@@ -79,6 +80,7 @@
                         bg-color="grey-7"
                         type="email"
                         v-model="email"
+                        name="user_email"
                         label="Email *"
                         hint="abc@abc.com"
                         lazy-rules
@@ -96,6 +98,7 @@
                         bg-color="grey-7"
                         dark
                         type="number"
+                        name="user_phone"
                         v-model="phone"
                         mask="(###) ### - ####"
                         unmasked-value
@@ -111,6 +114,7 @@
                         bg-color="grey-7"
                         type="textarea"
                         v-model="comment"
+                        name="message"
                         label="Message *"
                         hint="Be as detailed as you'd like"
                         lazy-rules
@@ -150,6 +154,8 @@
 </template>
 
 <script>
+import emailjs from "emailjs-com";
+
 export default {
   name: "ContactPage",
   data() {
@@ -196,10 +202,46 @@ export default {
       phone: ""
     };
   },
+  meta: {
+    // sets document title
+    title: "Web Design Blog",
+    // optional; sets final title as "Index Page - LOTUS Marketing Solutions", useful for multiple level meta
+    titleTemplate: title => `${title} - LOTUS Marketing Solutions`,
+
+    // meta tags
+    meta: {
+      description: {
+        name: "description",
+        content:
+          "Contact us today for a quick analysis of your website design and let us walk you through the improvements we can make to make sure your website is modern and comprehensive. We have over 10 years of experience in web design at your disposal."
+      },
+      equiv: {
+        "http-equiv": "Content-Type",
+        content: "text/html; charset=UTF-8"
+      }
+    }
+  },
   methods: {
     isValidEmailAddress(email) {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email).toLowerCase());
+    },
+    sendMail: e => {
+      emailjs
+        .sendForm(
+          "contact_saervice",
+          "template_contact",
+          e.target,
+          "user_DzeWQEkby1pHQC3E8FiDg"
+        )
+        .then(
+          result => {
+            console.log("SUCCESS!", response.status, response.text);
+          },
+          error => {
+            console.log("FAILED...", error);
+          }
+        );
     }
   }
 };

@@ -83,7 +83,7 @@ module.exports = function(ctx) {
       directives: ["Ripple"],
 
       // Quasar plugins
-      plugins: ["Loading", "LocalStorage"]
+      plugins: ["Loading", "LocalStorage", "Meta"]
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie

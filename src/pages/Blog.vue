@@ -28,6 +28,25 @@ export default {
       bannertext:
         "Follow our blog and discover the latest content and trends in the market."
     };
+  },
+  meta: {
+    // sets document title
+    title: "Web Design Blog",
+    // optional; sets final title as "Index Page - LOTUS Marketing Solutions", useful for multiple level meta
+    titleTemplate: title => `${title} - LOTUS Marketing Solutions`,
+
+    // meta tags
+    meta: {
+      description: {
+        name: "description",
+        content:
+          "We have collected a series of articles concerning web design, graphic design for websites or brand identity, user experience, and more. Feel free to read, learn, and share. We are always open to share the knowledge and educate our readers."
+      },
+      equiv: {
+        "http-equiv": "Content-Type",
+        content: "text/html; charset=UTF-8"
+      }
+    }
   }
 };
 </script>

@@ -98,6 +98,25 @@ export default {
         }
       ]
     };
+  },
+  meta: {
+    // sets document title
+    title: "FAQs",
+    // optional; sets final title as "Index Page - My Website", useful for multiple level meta
+    titleTemplate: title => `${title} - LOTUS Marketing Solutions`,
+
+    // meta tags
+    meta: {
+      description: {
+        name: "description",
+        content:
+          "Have questions? We have answers! Take some time to browse through our website and FAQs to learn about web design and what we do. If there is anything else we fail to cover, contact us and we will gladly help you with your concerns."
+      },
+      equiv: {
+        "http-equiv": "Content-Type",
+        content: "text/html; charset=UTF-8"
+      }
+    }
   }
 };
 </script>
