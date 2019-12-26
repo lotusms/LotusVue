@@ -3,11 +3,13 @@
     <q-header elevated class="bg-primary text-white" height-hint="98">
       <q-toolbar>
         <q-toolbar-title>
-          <q-img
-            src="../assets/logo.svg"
-            style="max-width:112px"
-            class="q-my-sm"
-          />
+          <router-link to="/">
+            <q-img
+              src="../assets/logo.svg"
+              style="max-width:112px"
+              class="q-my-sm"
+            />
+          </router-link>
         </q-toolbar-title>
         <q-space />
         <div class="main-nav">
