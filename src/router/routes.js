@@ -49,11 +49,45 @@ const routes = [
         component: () => import("pages/TermsOfUse.vue")
       },
 
+      // {
+      //   path: "/blog/:id",
+      //   props: true,
+      //   name: "view-post",
+      //   component: () => import("pages/blogs/Post.vue")
+      // },
+
       {
-        path: "/blog/:id",
-        props: true,
-        name: "view-post",
-        component: () => import("pages/blogs/Post.vue")
+        path: "/is-there-an-roi-in-buying-a-website",
+        component: () => import("pages/blogs/IsThereAnRoiInBuyingAWebsite.vue")
+      },
+      {
+        path: "/choosing-the-right-logo",
+        component: () => import("pages/blogs/ChoosingTheRightLogo.vue")
+      },
+      {
+        path: "/confirmation-dialogs",
+        component: () => import("pages/blogs/ConfirmationDialogs.vue")
+      },
+      {
+        path: "/content-validation",
+        component: () => import("pages/blogs/ContentValidation.vue")
+      },
+      {
+        path: "/how-much-is-a-website",
+        component: () => import("pages/blogs/HowMuchIsAWebsite.vue")
+      },
+      {
+        path: "/removing-the-hashtag-in-angular",
+        component: () => import("pages/blogs/RemovingTheHashtagInAngular.vue")
+      },
+      {
+        path: "/user-usability-and-user-experience",
+        component: () =>
+          import("pages/blogs/UserUsabilityAndUserExperience.vue")
+      },
+      {
+        path: "/using-images-on-a-website",
+        component: () => import("pages/blogs/UsingImagesOnAWebsite.vue")
       },
 
       { path: "/login", component: () => import("pages/LoginPage.vue") },
