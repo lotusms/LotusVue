@@ -94,7 +94,6 @@ module.exports = function(ctx) {
       scopeHoisting: true,
       vueRouterMode: "history", // available values: 'hash', 'history'
       showProgress: true,
-      vueRouterBase: "https://www.lotusmarketingsolutions.com/",
       gzip: false,
       analyze: false,
       // Options below are automatically set depending on the env, set them if you want to override
