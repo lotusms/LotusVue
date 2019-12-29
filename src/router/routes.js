@@ -1,97 +1,75 @@
+import Layout from "layouts/Layout.vue";
+import Home from "pages/Index.vue";
+import WebDesign from "pages/WebDesign.vue";
+import GraphicDesign from "pages/GraphicDesign.vue";
+import UserExperienceOptimization from "pages/UserExperienceOptimization.vue";
+import SocialNetworkOptimization from "pages/SocialNetworkOptimization.vue";
+import WebMaintenance from "pages/WebMaintenance.vue";
+import HowItWorks from "pages/HowItWorks.vue";
+import Blog from "pages/Blog.vue";
+import About from "pages/About.vue";
+import Contact from "pages/Contact.vue";
+import FAQs from "pages/FAQs.vue";
+import SalesPolicy from "pages/SalesPolicy.vue";
+import RefundPolicy from "pages/RefundPolicy.vue";
+import PrivacyPolicy from "pages/PrivacyPolicy.vue";
+import TermsOfUse from "pages/TermsOfUse.vue";
+import IsThereAnRoiInBuyingAWebsite from "pages/blogs/IsThereAnRoiInBuyingAWebsite.vue";
+import ChoosingTheRightLogo from "pages/blogs/ChoosingTheRightLogo.vue";
+import ConfirmationDialogs from "pages/blogs/ConfirmationDialogs.vue";
+import ContentValidation from "pages/blogs/ContentValidation.vue";
+import HowMuchIsAWebsite from "pages/blogs/HowMuchIsAWebsite.vue";
+import RemovingTheHashtagInAngular from "pages/blogs/RemovingTheHashtagInAngular.vue";
+import UserUsabilityAndUserExperience from "pages/blogs/UserUsabilityAndUserExperience.vue";
+import UsingImagesOnAWebsite from "pages/blogs/UsingImagesOnAWebsite.vue";
+import LoginPage from "pages/LoginPage.vue";
+import CreateBlog from "pages/CreateBlog.vue";
+
 const routes = [
   {
     path: "/",
-    component: () => import("layouts/Layout.vue"),
+    component: Layout,
     children: [
-      { path: "/", component: () => import("pages/Index.vue") },
-
-      { path: "/web-design", component: () => import("pages/WebDesign.vue") },
-      {
-        path: "/graphic-design",
-        component: () => import("pages/GraphicDesign.vue")
-      },
+      { path: "/", component: Home },
+      { path: "/web-design", component: WebDesign },
+      { path: "/graphic-design", component: GraphicDesign },
       {
         path: "/user-experience-optimization",
-        component: () => import("pages/UserExperienceOptimization.vue")
+        component: UserExperienceOptimization
       },
       {
         path: "/social-network-optimization",
-        component: () => import("pages/SocialNetworkOptimization.vue")
+        component: SocialNetworkOptimization
       },
-      {
-        path: "/web-maintenance",
-        component: () => import("pages/WebMaintenance.vue")
-      },
-
-      {
-        path: "/how-it-works",
-        component: () => import("pages/HowItWorks.vue")
-      },
-      { path: "/blog", component: () => import("pages/Blog.vue") },
-      { path: "/about", component: () => import("pages/About.vue") },
-      { path: "/contact", component: () => import("pages/Contact.vue") },
-
-      { path: "/faqs", component: () => import("pages/FAQs.vue") },
-      {
-        path: "/sales-policy",
-        component: () => import("pages/SalesPolicy.vue")
-      },
-      {
-        path: "/refund-policy",
-        component: () => import("pages/RefundPolicy.vue")
-      },
-      {
-        path: "/privacy-policy",
-        component: () => import("pages/PrivacyPolicy.vue")
-      },
-      {
-        path: "/terms-of-use",
-        component: () => import("pages/TermsOfUse.vue")
-      },
-
-      // {
-      //   path: "/blog/:id",
-      //   props: true,
-      //   name: "view-post",
-      //   component: () => import("pages/blogs/Post.vue")
-      // },
-
+      { path: "/web-maintenance", component: WebMaintenance },
+      { path: "/how-it-works", component: HowItWorks },
+      { path: "/blog", component: Blog },
+      { path: "/about", component: About },
+      { path: "/contact", component: Contact },
+      { path: "/faqs", component: FAQs },
+      { path: "/sales-policy", component: SalesPolicy },
+      { path: "/refund-policy", component: RefundPolicy },
+      { path: "/privacy-policy", component: PrivacyPolicy },
+      { path: "/terms-of-use", component: TermsOfUse },
       {
         path: "/is-there-an-roi-in-buying-a-website",
-        component: () => import("pages/blogs/IsThereAnRoiInBuyingAWebsite.vue")
+        component: IsThereAnRoiInBuyingAWebsite
       },
-      {
-        path: "/choosing-the-right-logo",
-        component: () => import("pages/blogs/ChoosingTheRightLogo.vue")
-      },
-      {
-        path: "/confirmation-dialogs",
-        component: () => import("pages/blogs/ConfirmationDialogs.vue")
-      },
-      {
-        path: "/content-validation",
-        component: () => import("pages/blogs/ContentValidation.vue")
-      },
-      {
-        path: "/how-much-is-a-website",
-        component: () => import("pages/blogs/HowMuchIsAWebsite.vue")
-      },
+      { path: "/choosing-the-right-logo", component: ChoosingTheRightLogo },
+      { path: "/confirmation-dialogs", component: ConfirmationDialogs },
+      { path: "/content-validation", component: ContentValidation },
+      { path: "/how-much-is-a-website", component: HowMuchIsAWebsite },
       {
         path: "/removing-the-hashtag-in-angular",
-        component: () => import("pages/blogs/RemovingTheHashtagInAngular.vue")
+        component: RemovingTheHashtagInAngular
       },
       {
         path: "/user-usability-and-user-experience",
-        component: () =>
-          import("pages/blogs/UserUsabilityAndUserExperience.vue")
+        component: UserUsabilityAndUserExperience
       },
-      {
-        path: "/using-images-on-a-website",
-        component: () => import("pages/blogs/UsingImagesOnAWebsite.vue")
-      },
-
-      { path: "/login", component: () => import("pages/LoginPage.vue") },
-      { path: "/create-blog", component: () => import("pages/CreateBlog.vue") }
+      { path: "/using-images-on-a-website", component: UsingImagesOnAWebsite },
+      { path: "/login", component: LoginPage },
+      { path: "/create-blog", component: CreateBlog }
     ]
   }
 ];
